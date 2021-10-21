@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Word Counter</title>
+	<style>
+		h1 {
+			text-align: center;
+			font-family: 'DIN Alternate', sans-serif;
+			color: #011132;
+		}
+
+		form {
+			border: 10px solid #011132;
+			padding: 10px;
+			background-color: white;
+			font-family: 'DIN Condensed', sans-serif;
+			color: #011132;
+		}
+
+		textarea {
+			width: 98%;
+			height: 200px;
+			margin: -0.1%;
+			border: 5px solid #011132;
+			color: inherit;
+		}
+
+		input, select {
+			border: 5px solid #011132;
+			font-family: inherit;
+			color: inherit;
+		}
+
+		table {
+			margin-top: 25px;
+			border: 10px solid #011132;
+			padding: 10px;
+			background-color: white;
+			font-family: 'DIN Condensed', sans-serif;
+			color: #011132;
+		}
+
+		th, td {
+			border: 5px solid #011132;
+			border-collapse: collapse;
+			padding: 5px;
+
+		}
+
+		footer {
+			margin-top: 25px;
+			padding: 25px;
+			background-color: #011132;
+			text-align: center;
+			font-family: 'DIN Condensed', sans-serif;
+			color: white;
+		}
+
+		footer > a {
+			margin: 5px;
+			font-weight: bold;
+			text-decoration: none;
+			color: inherit;
+		}
+	</style>
+	<link rel="icon" href="https://drive.google.com/uc?export=view&id=1zfDpfpFZcdy15ZleXRaAAyDfg-yt1Rp_">
+</head>
+<body>
+	<a href="https://www.youtube.com/channel/UCgitBYvV_S-i0Cvp6LfNIAQ" target="_blank">
+		<img src="https://drive.google.com/uc?export=view&id=1ifAP7A66Kn-Sm6hkJeMBhIFdmJUTi5ZJ" alt="banner" width="100%">
+	</a>
+	<h1>Word Counter</h1>
+	<form>
+		<textarea id="text" placeholder="Type text here"></textarea><br>
+		<input type="button" value="Go!" onclick="updateCount()"><br><br>
+		<label for="lang">Language</label><br>
+		<select id="lang">
+			<option value="LAT">Latin</option>
+			<option value="CJK">CJK</option>
+		</select>
+	</form>
+	<table>
+		<tr>
+			<th>Words</th>
+			<td id="word_count">0</td>
+		</tr>
+		<tr>
+			<th>Letters</th>
+			<td id="letter_count">0</td>
+		</tr>
+		<tr>
+			<th>Characters</th>
+			<td id="char_count">0</td>
+		</tr>
+		<tr>
+			<th>Characters without spaces</th>
+			<td id="char_no_space_count">0</td>
+		</tr>
+	</table>
+	<footer>
+		<a href="mailto:weirdo.channelacc@gmail.com">Contact us</a><br>
+		<a href="https://youtube.com/channel/UCgitBYvV_S-i0Cvp6LfNIAQ" target="_blank">YouTube</a>|
+		<a href="https://twitch.tv/we1rdolive" target="_blank">Twitch</a>|
+		<a href="https://facebook.com/Weirdo-105652724849905" target="_blank">Facebook</a>|
+		<a href="https://twitter.com/we1rdoyt" target="_blank">Twitter</a>|
+		<a href="https://reddit.com/r/We1rdo" target="_blank">Reddit</a>|
+		<a href="https://discord.gg/qvPQgBfkHN" target="_blank">Discord</a>|
+		<a href="https://github.com/We1rdo-YT" target="_blank">GitHub</a><br>
+		<a href="https://github.com/We1rdo-YT/Creations" target="_blank">Weirdo Creations</a>
+	</footer>
+</body>
+<script>
+	function updateCount() {
+		const text = document.getElementById("text").value;
+		// ?? does not work on some browsers.
+		const count = match => {
+			const matches = text.match(match);
+			return (matches == null) ? 0:matches.length;
+		}
+
+		document.getElementById("char_count").innerHTML = text.length;
+		document.getElementById("char_no_space_count").innerHTML = count(/\S/g);
+		switch (document.getElementById("lang").value) {
+			case "LAT":
+				let words = [];
+				text.split(/\s/).forEach(word => {
+					if (/\w/.test(word)) {
+						words.push(word);
+					}
+				});
+
+				document.getElementById("word_count").innerHTML = words.length;
+				document.getElementById("letter_count").innerHTML = count(/\w/g);
+				break;
+			case "CJK":
+				// /\p{Han}/ does not work on some browsers.
+				document.getElementById("word_count").innerHTML = count(/[\u4e00-\u9fff]/g);
+				document.getElementById("letter_count").innerHTML = "N/A";
+		}
+	}
+</script>
+</html>
