@@ -1,4 +1,4 @@
-#Installation
+# Installation
 
 * Datapack
   1. If the Datapack has a Resource Pack, make sure to download it as well.
@@ -13,7 +13,7 @@
 * World
   1. Move the Resource Pack to the `worlds` folder (`C:\users\`*user*`\AppData\Roaming\.minecraft\worlds`).
 
-#Updating
+# Updating
 
 * Datapack
   1. In the World where the Datapack is, type `/function `*namespace*`:uninstall` in the chat.
@@ -24,7 +24,7 @@
   1. Delete the Resource Pack from the `resourcepacks` folder (`C:\users\`*user*`\AppData\Roaming\.minecraft\resourcepacks`).
   2. Install the new version of the Resource Pack.
 
-#Uninstallation
+# Uninstallation
 
 * Datapack
   1. In the World where the Datapack is, type `/function `*namespace*`:uninstall` in the chat.
